@@ -202,6 +202,6 @@ For the last image, unfortunately, failed.
 ### (Optional) Visualizing the Neural Network (See Step 4 of the Ipython notebook for more details)
 #### 1. Discuss the visual output of your trained network's feature maps. What characteristics did the neural network use to make classifications?
 ![alt text][vis]
-The neural network mainly used edges to make classifications.
+The neural network mainly used edges and details within the traffic sign to make classifications.
 
 
