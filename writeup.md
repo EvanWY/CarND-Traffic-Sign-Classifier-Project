@@ -26,6 +26,7 @@ The goals / steps of this project are the following:
 [image6]: ./traffic-signs-data/333.png "Traffic Sign 3"
 [image7]: ./traffic-signs-data/444.png "Traffic Sign 4"
 [image8]: ./traffic-signs-data/555.png "Traffic Sign 5"
+[vis]: ./visualize_cnn_2.png "Visualization"
 
 ## Rubric Points
 ### Here I will consider the [rubric points](https://review.udacity.com/#!/rubrics/481/view) individually and describe how I addressed each point in my implementation.  
@@ -127,7 +128,7 @@ Here are five German traffic signs that I found on the web:
 ![alt text][image4] ![alt text][image5] ![alt text][image6] 
 ![alt text][image7] ![alt text][image8]
 
-The first image might be difficult to classify because ...
+The last image might be difficult to classify because it's shoot from the side
 
 #### 2. Discuss the model's predictions on these new traffic signs and compare the results to predicting on the test set. At a minimum, discuss what the predictions were, the accuracy on these new predictions, and compare the accuracy to the accuracy on the test set (OPTIONAL: Discuss the results in more detail as described in the "Stand Out Suggestions" part of the rubric).
 
@@ -135,33 +136,72 @@ Here are the results of the prediction:
 
 | Image			        |     Prediction	        					| 
 |:---------------------:|:---------------------------------------------:| 
-| Stop Sign      		| Stop sign   									| 
-| U-turn     			| U-turn 										|
-| Yield					| Yield											|
-| 100 km/h	      		| Bumpy Road					 				|
-| Slippery Road			| Slippery Road      							|
+| 70km/h      		| 70km/h   									| 
+| Stop     			| Stop 										|
+| Turn left ahead					| Turn left ahead											|
+| Pedestrians	      		| Pedestrians					 				|
+| 50km/h			| 30km/h      							|
 
-
-The model was able to correctly guess 4 of the 5 traffic signs, which gives an accuracy of 80%. This compares favorably to the accuracy on the test set of ...
+The model was able to correctly guess 4 of the 5 traffic signs, which gives an accuracy of 80%.
 
 #### 3. Describe how certain the model is when predicting on each of the five new images by looking at the softmax probabilities for each prediction. Provide the top 5 softmax probabilities for each image along with the sign type of each probability. (OPTIONAL: as described in the "Stand Out Suggestions" part of the rubric, visualizations can also be provided such as bar charts)
 
 The code for making predictions on my final model is located in the 11th cell of the Ipython notebook.
 
-For the first image, the model is relatively sure that this is a stop sign (probability of 0.6), and the image does contain a stop sign. The top five soft max probabilities were
+For the first image, the probability for 20km/h is quite high because 70km/h looks similar to 20km/h the top five soft max probabilities were
 
 | Probability         	|     Prediction	        					| 
 |:---------------------:|:---------------------------------------------:| 
-| .60         			| Stop sign   									| 
-| .20     				| U-turn 										|
-| .05					| Yield											|
-| .04	      			| Bumpy Road					 				|
-| .01				    | Slippery Road      							|
+| .17         			| 70km/h   									| 
+| .15     				| 20km/h 										|
+| .14					| 30km/h											|
+| .08	      			| keep left					 				|
+| .05				    | 80km/h      							|
 
 
-For the second image ... 
+For the second image 
+
+| Probability         	|     Prediction	        					| 
+|:---------------------:|:---------------------------------------------:| 
+| .04         			| Stop   									| 
+| .03     				| 70km/h 										|
+| .02					| 20km/h											|
+| .02	      			| keep left					 				|
+| .02				    | 30km/h      							|
+
+For the third image, all the top 5 guessing are circle shape sign, visually similar to turn left ahead.
+
+| Probability         	|     Prediction	        					| 
+|:---------------------:|:---------------------------------------------:| 
+| .07         			| Turn left ahead   									| 
+| .04     				| Keep right 										|
+| .03					| Ahead only											|
+| .03	      			| Go straight or left					 				|
+| .02				    | Roundabout mandatory      							|
+
+For the fourth image, the second place is quite close to the first place. Acually, Right-of-way sign is very similar to Peds sign.
+
+| Probability         	|     Prediction	        					| 
+|:---------------------:|:---------------------------------------------:| 
+| .0553         			| Pedestrians    									| 
+| .0550     				|  Right-of-way at the next intersection 										|
+| .052					| General caution											|
+| .04	      			| Road narrows on the right					 				|
+| .04				    | Dangerous curve to the right      							|
+
+For the last image, unfortunately, failed. 
+
+| Probability         	|     Prediction	        					| 
+|:---------------------:|:---------------------------------------------:| 
+| .06         			| 30km/h   									| 
+| .059     				|  50km/h 										|
+| .04					| Roundabout mandatory											|
+| .03	      			| 20km/h					 				|
+| .02				    | Stop      							|
 
 ### (Optional) Visualizing the Neural Network (See Step 4 of the Ipython notebook for more details)
 #### 1. Discuss the visual output of your trained network's feature maps. What characteristics did the neural network use to make classifications?
+![alt text][vis]
+The neural network mainly used edges and details within the traffic sign to make classifications.
 
 
